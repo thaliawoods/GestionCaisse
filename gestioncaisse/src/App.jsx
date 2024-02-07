@@ -7,16 +7,36 @@ import supabaseKey from '../supabasekey.js'
 const supabase = createClient(supabaseUrl, supabaseKey)
 
 
-// CHECK SI BIEN CLÉ
+// check si la clé marche
 // console.log(supabaseKey)
 
-// CHECKER SI BIEN CONNECTÉ À LA BDD
+
+// check si la base de données est bien connectée
 async function getTest() {
-  const { data } = await supabase.from("users").select();
+  const { data } = await supabase.from("selectedItems").select();
   console.log(data)
 }
 getTest()
 
+
+const addCoffee = async () => {
+  try {
+    const { error } = await supabase
+    .from('selectedItems')
+    .insert({ product_id: 9, product_name: 'Caf', product_price: '1' })
+  if (error) {
+    throw error;
+  }
+  console.log('Added');
+  } catch (error) {
+    console.log('Error')
+  }
+}
+
+
+const handleCoffeeButtonClick = async () => {
+  await addCoffee();
+}
 
 
 // barre de nav
@@ -24,6 +44,7 @@ const SideBar = () => {
   const handleSidebarClick = (section) => {
     console.log(`Section clicked: ${section}`);
   };
+
 
   return (
     <div className="sidebar">
@@ -85,6 +106,7 @@ const TicketRectangle = ({ selectedItems, onPayButtonClick }) => {
   );
 };
 
+
 const App = () => {
   const [selectedItems, setSelectedItems] = useState([]);
   const [payClicked, setPayClicked] = useState(false);
@@ -102,6 +124,7 @@ const App = () => {
 // retourne app
   return (
     <div className="app-container">
+       <button onClick={handleCoffeeButtonClick}>Caf</button>
       <SideBar />
       <div className="main-content">
         <h1>Caisse</h1>
