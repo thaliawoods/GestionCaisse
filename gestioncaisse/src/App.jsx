@@ -1,5 +1,22 @@
 // importer React
 import React, { useState } from 'react';
+import { createClient } from '@supabase/supabase-js'
+const supabaseUrl = 'https://ksrrjzicnzctxxrgtyua.supabase.co'
+// const supabaseKey = process.env.REACT_APP_SUPABASE_KEY
+import supabaseKey from '../supabasekey.js'
+const supabase = createClient(supabaseUrl, supabaseKey)
+
+
+// CHECK SI BIEN CLÉ
+// console.log(supabaseKey)
+
+// CHECKER SI BIEN CONNECTÉ À LA BDD
+async function getTest() {
+  const { data } = await supabase.from("users").select();
+  console.log(data)
+}
+getTest()
+
 
 
 // barre de nav
