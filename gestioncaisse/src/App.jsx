@@ -12,37 +12,72 @@ const supabase = createClient(supabaseUrl, supabaseKey)
 
 
 // check si la base de données est bien connectée
-async function getTest() {
-  const { data } = await supabase.from("selectedItems").select();
-  console.log(data)
-}
-getTest()
+// async function getTest() {
+//   const { data } = await supabase.from("selectedItems").select();
+//   console.log(data)
+// }
+// getTest()
 
 
-const addCoffee = async () => {
-  try {
-    const { error } = await supabase
-    .from('selectedItems')
-    .insert({ product_id: 9, product_name: 'Caf', product_price: '1' })
-  if (error) {
-    throw error;
-  }
-  console.log('Added');
-  } catch (error) {
-    console.log('Error')
-  }
-}
+// const addProductToDatabase = async (productName, productPrice) => {
+//   try {
+//     const { error } = await supabase
+//     .from('selectedItems')
+//     .insert({ product_name: productName, product_price: productPrice })
+//   if (error) {
+//     throw error;
+//   }
+//   console.log('Added');
+//   } catch (error) {
+//     console.log('Error')
+//   }
+// }
 
 
-const handleCoffeeButtonClick = async () => {
-  await addCoffee();
-}
+// const handleCoffeeButtonClick = async (productName, productPrice) => {
+//   await addProductToDatabase(productName, productPrice);
+// }
+
+
+
+const App = () => {
+  const [selectedItems, setSelectedItems] = useState([]);
+  const [payClicked, setPayClicked] = useState(false);
+
+  const addProductToDatabase = async (productName, productPrice) => {
+    try {
+      const { error } = await supabase
+        .from('selectedItems')
+        .insert({ product_name: productName, product_price: productPrice });
+      
+      if (error) {
+        throw error;
+      }
+      
+      console.log(`${productName} added`);
+    } catch (error) {
+      console.error(`error ${productName} :`, error.message);
+    }
+  };
+
+  const handleProductButtonClick = async (productName, productPrice) => {
+    await addProductToDatabase(productName, productPrice);
+  };
+
+  const handleButtonClick = (item) => {
+    setSelectedItems([...selectedItems, item]);
+  };
+
+  const handlePayButtonClick = () => {
+    setSelectedItems([]);
+    setPayClicked(true);
+  };
 
 
 // barre de nav
 const SideBar = () => {
   const handleSidebarClick = (section) => {
-    console.log(`Section clicked: ${section}`);
+    console.log(`click: ${section}`);
   };
 
 
@@ -107,36 +142,62 @@ const TicketRectangle = ({ selectedItems, onPayButtonClick }) => {
 };
 
 
-const App = () => {
-  const [selectedItems, setSelectedItems] = useState([]);
-  const [payClicked, setPayClicked] = useState(false);
+// const App = () => {
+//   const [selectedItems, setSelectedItems] = useState([]);
+//   const [payClicked, setPayClicked] = useState(false);
 
-  const handleButtonClick = (item) => {
-    setSelectedItems([...selectedItems, item]);
-  };
+//   const handleButtonClick = (item) => {
+//     setSelectedItems([...selectedItems, item]);
+//   };
 
-  const handlePayButtonClick = () => {
-    setSelectedItems([]);
-    setPayClicked(true);
-  };
+//   const handlePayButtonClick = () => {
+//     setSelectedItems([]);
+//     setPayClicked(true);
+//   };
 
 
 // retourne app
-  return (
-    <div className="app-container">
-       <button onClick={handleCoffeeButtonClick}>Caf</button>
-      <SideBar />
-      <div className="main-content">
-        <h1>Caisse</h1>
-        <ButtonRectangle onButtonClick={handleButtonClick} />
-        {payClicked ? (
-          <p>Paiement effectué !</p>
-        ) : (
-          <TicketRectangle selectedItems={selectedItems} onPayButtonClick={handlePayButtonClick} />
-        )}
-      </div>
+//   return (
+//     <div className="app-container">
+//        <button onClick={handleCoffeeButtonClick}>Caf</button>
+//       <SideBar />
+//       <div className="main-content">
+//         <h1>Caisse</h1>
+//         <ButtonRectangle onButtonClick={handleButtonClick} />
+//         {payClicked ? (
+//           <p>Paiement effectué !</p>
+//         ) : (
+//           <TicketRectangle selectedItems={selectedItems} onPayButtonClick={handlePayButtonClick} />
+//         )}
+//       </div>
+//     </div>
+//   );
+// };
+
+
+
+return (
+  <div className="app-container">
+    <button onClick={() => handleProductButtonClick('Café', 1)}>Caf</button>
+    <button onClick={() => handleProductButtonClick('Jus', 1)}>Jus</button>
+    <button onClick={() => handleProductButtonClick('Soda', 1)}>Soda</button>
+    <button onClick={() => handleProductButtonClick('Choco', 1)}>Choco</button>
+    <button onClick={() => handleProductButtonClick('Bonbons', 1)}>Bonbons</button>
+    <button onClick={() => handleProductButtonClick('Biscuits', 1)}>Biscuits</button>
+    
+    <SideBar />
+    <div className="main-content">
+      <h1>Caisse</h1>
+      <ButtonRectangle onButtonClick={handleButtonClick} />
+      {payClicked ? (
+        <p>Paiement effectué !</p>
+      ) : (
+        <TicketRectangle selectedItems={selectedItems} onPayButtonClick={handlePayButtonClick} />
+      )}
     </div>
-  );
+  </div>
+);
 };
+
 
 export default App;
