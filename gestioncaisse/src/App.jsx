@@ -7,18 +7,6 @@ import supabaseKey from '../supabasekey.js'
 const supabase = createClient(supabaseUrl, supabaseKey)
 
 
-// check si la clé marche
-// console.log(supabaseKey)
-
-
-// check si la base de données est bien connectée
-// async function getTest() {
-//   const { data } = await supabase.from("selectedItems").select();
-//   console.log(data)
-// }
-// getTest()
-
-
 // const addProductToDatabase = async (productName, productPrice) => {
 //   try {
 //     const { error } = await supabase
@@ -32,7 +20,6 @@ const supabase = createClient(supabaseUrl, supabaseKey)
 //     console.log('Error')
 //   }
 // }
-
 
 // const handleCoffeeButtonClick = async (productName, productPrice) => {
 //   await addProductToDatabase(productName, productPrice);
