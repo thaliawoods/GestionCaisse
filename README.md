@@ -1,33 +1,30 @@
 # GestionCaisse
 
 
-Conception d'une application pour gérer la caisse et les stocks du bar de l'association d'un Lycée Agricole à Aurillac. Réalisée avec React pour le Front, Node.js et Express.js pour le Back, et utilisant Supabase pour la base de données.
+Conception d'une application pour la gestion de la caisse et des stocks du bar de l'association étudiante d'un Lycée Agricole à Aurillac. Réalisée avec React pour le frontend, Node.js et Express.js pour le backend, et utilisant Supabase comme base de données.
 
 
-## Rdv avec Eline
+## Rendez-vous avec Eline
 
+Eline, la CPE du Lycée Agricole, nous mettra en contact avec l'élève trésorier afin qu'il nous expose clairement ses problématiques.
 
-Eline la CPE du Lycée Agricole va nous mettre en contact avec l’Élève trésorier pour qu’il nous explique clairement ses problématiques. 
+Elle souhaite une application de gestion de caisse pour l'association étudiante au sein du lycée agricole.
 
-Elle souhaite une application de Gestion de Caisse pour l'Association Étudiante au sein d’un lycée agricole.
+Autonome, l'association organise des événements et dispose d'un bar ouvert toute la semaine. Nous devrons gérer le suivi des stocks, des entrées, des sorties, des ventes, ainsi que le total, afin de pouvoir déterminer les commandes à passer.
 
-Auto gérée, l’association organise des événements et a un bar ouvert sur toute la semaine. Nous allons avoir une problématique de tracking donc de suivre le stock, les entrées, les sorties, les ventes, le total etc pour pouvoir derrière savoir quel commandes effectuer.
+Chaque semaine, une équipe différente prend le relais, ce qui implique un changement d'utilisateur. Il est donc nécessaire de prévoir une partie pour les utilisateurs et une partie pour les administrateurs.
 
-Toutes les semaines une équipe différente prend le relai avec donc changement il y a un changement d’utilisateur donc besoin d'une partie utilisateurs et admin.
+Enregistrement de la caisse : le produit est saisi, débité, ajouté au stock et au total (Exemple : 6 cocas = 6 * 3 = 18€).
 
-Enregistrement de caisse : le produit est rentré, débité, ajouté dans le stock et au total ( Ex : 6 cocas = 6*3=198 )
+L'application web sera responsive afin d'être utilisable sur mobile.
 
-Application Web responsive pour pouvoir être utiliser sur mobile.
+À prendre en considération : Absence de connexion wifi pour l'instant dans l'établissement.
 
+Le lycée est situé à Aurillac, mais Eline souhaite parler de notre projet et nous mettre en contact avec d'autres lycées agricoles, car ils recherchent la même solution.
 
-À réflechir : Pas de wifi pour l'instant dans l’établissement
+Inclure le logo officiel du lycée (Eline pense que cela facilitera les prises de contact ultérieures).
 
-
-Lycée situé à Aurillac (mais elle souhaite parler de nous et nous mettre en contact avec les autres lycées agricoles car ils recherchent la même chose)
-
-Mettre le logo officiel du Lycée (elle pense qu’on nous recontactera plus facilement derrière)
-
-Iels ne sont pas disponibles pendant les vacances scolaires
+Ils ne seront pas disponibles pendant les vacances scolaires.
 
 
 ## Figma du Projet
