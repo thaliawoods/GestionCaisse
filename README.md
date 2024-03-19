@@ -1,7 +1,7 @@
 # GestionCaisse
 
 
-Conception d'une application pour la gestion de la caisse et des stocks du bar de l'association étudiante d'un Lycée Agricole à Aurillac. Réalisée avec React pour le frontend, Node.js et Express.js pour le backend, et utilisant Supabase comme base de données.
+Conception d'une application pour la gestion de la caisse et des stocks du bar de l'association étudiante d'un Lycée Agricole à Aurillac. Réalisée avec React pour le frontend, Node.js et Express.js pour le backend, et en utilisant Supabase comme base de données.
 
 
 ## Rendez-vous avec Eline
